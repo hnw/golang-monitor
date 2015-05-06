@@ -32,7 +32,7 @@ type ArchivedData struct {
 	Timestamp time.Time `json:"timestamp"`
 	Min       float64   `json:"min"`
 	Max       float64   `json:"max"`
-	Ave       float64   `json:"ave"`
+	Avg       float64   `json:"avg"`
 	Count     int       `json:"count"`
 }
 
@@ -141,7 +141,7 @@ func (smrzd *Archive) append(el rawData) {
 		if last_el.Min > el.val {
 			last_el.Min = el.val
 		}
-		last_el.Ave = (last_el.Ave*float64(last_el.Count) + el.val) / float64(last_el.Count+1)
+		last_el.Avg = (last_el.Avg*float64(last_el.Count) + el.val) / float64(last_el.Count+1)
 		last_el.Count++
 		// アトミックに書き換える
 		smrzd.vals[len(smrzd.vals)-1] = last_el

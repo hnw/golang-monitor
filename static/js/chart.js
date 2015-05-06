@@ -14,9 +14,9 @@ function drawChart(duration) {
 function drawChartAux(rows) {
     var data = new google.visualization.DataTable();
     data.addColumn('datetime', 'date');
-    data.addColumn('number', 'ave');
+    data.addColumn('number', 'avg');
 
-    rows = rows.map(function(arr){return [new Date(arr['timestamp']),arr['ave']];});
+    rows = rows.map(function(arr){return [new Date(arr['timestamp']),arr['avg']];});
     data.addRows(rows);
 
     var options = {
